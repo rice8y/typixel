@@ -40,10 +40,10 @@ install:
 
   cp *.typ "$TARGET_DIR"
   
-  if [ -f "auto_jrubby.wasm" ]; then
-    cp auto_jrubby.wasm "$TARGET_DIR"
+  if [ -f "typixel_plugin.wasm" ]; then
+    cp typixel_plugin.wasm "$TARGET_DIR"
   else
-    echo "Warning: auto_jrubby.wasm not found in current directory."
+    echo "Warning: typixel_plugin.wasm not found in current directory."
     exit 1
   fi
 
