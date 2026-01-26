@@ -1,6 +1,6 @@
 # Typixel
 
-![logo](package/images/logo.png)
+![Typixel Logo](package/images/logo.png)
 
 A Typst package for creating pixel art directly in your documents. Convert images to pixel art or design custom pixel graphics using simple text maps.
 
@@ -25,7 +25,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 )
 ```
 
-![ex01](package/images/ex01.png)
+![Comparison: Original image vs Pixel art version](package/images/ex01.png)
 
 ### Text-based Pixel Map
 
@@ -46,7 +46,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 )
 ```
 
-![ex02](package/images/ex02.png)
+![Red trapezoidal pixel art generated from text map](package/images/ex02.png)
 
 ## API Reference
 
@@ -177,7 +177,7 @@ Create pixel art from a text grid.
 )
 ```
 
-![ex03](package/images/ex03.png)
+![Rainbow gradient example using circle shapes](package/images/ex03.png)
 
 
 ### Mixed Shapes
@@ -209,7 +209,7 @@ Create pixel art from a text grid.
 )
 ````
 
-![ex04](package/images/ex04.png)
+![Mixed shapes example showing stars, circles, diamonds, and hearts](package/images/ex04.png)
 
 ### Custom Shape Definition
 
@@ -246,7 +246,7 @@ Create pixel art from a text grid.
 )
 ```
 
-![ex05](package/images/ex05.png)
+![Custom octagon shape example](package/images/ex05.png)
 
 ## Limitations
 
@@ -259,3 +259,5 @@ This occurs because:
 ## License
 
 This project is distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+The example image `gahag.jpg` is based on an image from [GAHAG](https://gahag.net/000312-tree-landscape/) and is licensed under CC0.
