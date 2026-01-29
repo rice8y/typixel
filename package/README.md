@@ -108,6 +108,36 @@ Create pixel art from a text grid.
 )
 ```
 
+### `get-pixel-data()`
+
+Obtain the raw pixel art data (grid and palette) from an image without rendering. Useful for custom processing or debugging.
+
+**Parameters:**
+
+* `image-data` (bytes): Raw image data (e.g. from `read("path", encoding: none)`)
+* `columns` (int, default: auto): Number of pixel columns
+* `rows` (int, default: auto): Number of pixel rows
+* `scale` (float, default: auto): Scale factor for image
+* `colors` (int, default: 64): Number of colors in palette
+
+**Returns:**
+A dictionary containing:
+
+* `art` (string): The generated character grid (rows separated by newlines).
+* `palette` (dictionary): Mapping of characters to color values (or `none`).
+
+**Example:**
+
+```typ
+#let data = get-pixel-data(
+  read("icon.png", encoding: none),
+  columns: 16
+)
+
+// Access the raw grid string
+#let grid-str = data.art
+```
+
 ## Available Shapes
 
 ### Built-in Shape Functions
