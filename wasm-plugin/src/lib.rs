@@ -40,7 +40,6 @@ pub fn rgba_to_grid(image_bytes: &[u8], config_bytes: &[u8]) -> Vec<u8> {
         let scale = h as f64 / orig_h as f64;
         ((orig_w as f64 * scale) as u32, h)
     } else if let Some(s) = config.scale {
-        // スケール指定の場合
         let w = (orig_w as f64 * s) as u32;
         let h = (orig_h as f64 * s) as u32;
         (w, h)
