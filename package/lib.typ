@@ -1,4 +1,4 @@
-#let p = plugin("typixel_plugin.wasm")
+#let _plugin = plugin("typixel_plugin.wasm")
 
 // ==============================================
 // Shapes
@@ -163,7 +163,7 @@
     colors: colors
   )
 
-  let json-bytes = p.rgba_to_grid(image-data, bytes(json.encode(config)))
+  let json-bytes = _plugin.rgba_to_grid(image-data, bytes(json.encode(config)))
   let result = json(json-bytes)
 
   if "error" in result {
@@ -214,4 +214,28 @@
     gap: gap,
     default-color: black
   )
+}
+
+#let get-pixel-data(
+  image-data,
+  columns: auto,
+  rows: auto,
+  scale: auto,
+  colors: 64,
+) = {
+  let config = (
+    width: if columns == auto { none } else { columns },
+    height: if rows == auto { none } else { rows },
+    scale: if scale == auto { none } else { scale },
+    colors: colors
+  )
+
+  let json-bytes = _plugin.rgba_to_grid(image-data, bytes(json.encode(config)))
+  let result = json(json-bytes)
+
+  if "error" in result {
+    panic("Pixel Art Plugin Error: " + result.error)
+  }
+
+  return result
 }
