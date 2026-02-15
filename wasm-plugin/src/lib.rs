@@ -44,9 +44,18 @@ pub fn rgba_to_grid(image_bytes: &[u8], config_bytes: &[u8]) -> Vec<u8> {
         let h = (orig_h as f64 * s) as u32;
         (w, h)
     } else {
-        let w = 32;
-        let scale = w as f64 / orig_w as f64;
-        (w, (orig_h as f64 * scale) as u32)
+        let total_pixels = (orig_w as u64) * (orig_h as u64);
+        let safe_limit = 1_000_000;
+
+        if total_pixels > safe_limit {
+            let error_msg = format!(
+                "{{\"error\": \"Image size ({}x{} = {} pixels) is too large for default processing. It exceeds the safety limit of {} pixels (approx 1000x1000). Please explicitly set 'scale: 1' if you want to proceed, or specify width/height.\"}}",
+                orig_w, orig_h, total_pixels, safe_limit
+            );
+            return error_msg.into_bytes();
+        }
+
+        (orig_w, orig_h)
     };
 
     let target_width = target_width.max(1);
