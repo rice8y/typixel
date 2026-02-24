@@ -9,7 +9,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 ### Image to Pixel Art
 
 ```typ
-#import "@preview/typixel:0.1.0": *
+#import "@preview/typixel:0.1.1": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #grid(
@@ -30,7 +30,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 ### Text-based Pixel Map
 
 ```typ
-#import "@preview/typixel:0.1.0": *
+#import "@preview/typixel:0.1.1": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -188,7 +188,7 @@ A dictionary containing:
 ### Rainbow Gradient
 
 ```typ
-#import "@preview/typixel:0.1.0": *
+#import "@preview/typixel:0.1.1": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -213,7 +213,7 @@ A dictionary containing:
 ### Mixed Shapes
 
 ````typ
-#import "@preview/typixel:0.1.0": *
+#import "@preview/typixel:0.1.1": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -244,7 +244,7 @@ A dictionary containing:
 ### Custom Shape Definition
 
 ```typ
-#import "@preview/typixel:0.1.0": *
+#import "@preview/typixel:0.1.1": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 // 1. Define your custom shape
