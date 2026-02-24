@@ -117,7 +117,7 @@ Obtain the raw pixel art data (grid and palette) from an image without rendering
 * `image-data` (bytes): Raw image data (e.g. from `read("path", encoding: none)`)
 * `columns` (int, default: auto): Number of pixel columns
 * `rows` (int, default: auto): Number of pixel rows
-* `scale` (float, default: auto): Scale factor for image
+* `scale` (float, default: auto): Scale factor for image (`auto` → internally `1` with safety guard: ≤ 1 MP allowed, otherwise error)
 * `colors` (int, default: 64): Number of colors in palette
 
 **Returns:**
