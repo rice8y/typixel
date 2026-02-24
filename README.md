@@ -130,8 +130,7 @@ A dictionary containing:
 
 ```typ
 #let data = get-pixel-data(
-  read("icon.png", encoding: none),
-  columns: 16
+  read("icon.png", encoding: none)
 )
 
 // Access the raw grid string
