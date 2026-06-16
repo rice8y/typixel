@@ -1,5 +1,26 @@
 #let _plugin = plugin("typixel_plugin.wasm")
 
+#let _v15-or-later() = {
+  sys.version >= version(0, 15, 0)
+}
+
+#let _image-data-bytes(image-data) = {
+  if type(image-data) == bytes {
+    return image-data
+  }
+
+  if _v15-or-later() and repr(type(image-data)) == "path" {
+    return read(image-data, encoding: none)
+  }
+
+  let expected = if _v15-or-later() {
+    "bytes from read(..., encoding: none) or a path from path(...)"
+  } else {
+    "bytes from read(..., encoding: none)"
+  }
+  panic("Typixel expected image-data to be " + expected + ".")
+}
+
 // ==============================================
 // Shapes
 // ==============================================
@@ -156,6 +177,7 @@
   gap: 0pt,
   ..args
 ) = {
+  let image-bytes = _image-data-bytes(image-data)
   let config = (
     width: if columns == auto { none } else { columns },
     height: if rows == auto { none } else { rows },
@@ -163,7 +185,7 @@
     colors: colors
   )
 
-  let json-bytes = _plugin.rgba_to_grid(image-data, bytes(json.encode(config)))
+  let json-bytes = _plugin.rgba_to_grid(image-bytes, bytes(json.encode(config)))
   let result = json(json-bytes)
 
   if "error" in result {
@@ -223,6 +245,7 @@
   scale: auto,
   colors: 64,
 ) = {
+  let image-bytes = _image-data-bytes(image-data)
   let config = (
     width: if columns == auto { none } else { columns },
     height: if rows == auto { none } else { rows },
@@ -230,7 +253,7 @@
     colors: colors
   )
 
-  let json-bytes = _plugin.rgba_to_grid(image-data, bytes(json.encode(config)))
+  let json-bytes = _plugin.rgba_to_grid(image-bytes, bytes(json.encode(config)))
   let result = json(json-bytes)
 
   if "error" in result {
