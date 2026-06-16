@@ -1,6 +1,4 @@
-# Typixel
-
-![Typixel Logo](package/images/logo.png)
+# ![Typixel Logo](package/images/logo.png)
 
 A Typst package for creating pixel art directly in your documents. Convert images to pixel art or design custom pixel graphics using simple text maps.
 
@@ -9,7 +7,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 ### Image to Pixel Art
 
 ```typ
-#import "@preview/typixel:0.1.1": *
+#import "@preview/typixel:0.1.2": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #grid(
@@ -30,7 +28,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 ### Text-based Pixel Map
 
 ```typ
-#import "@preview/typixel:0.1.1": *
+#import "@preview/typixel:0.1.2": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -55,7 +53,7 @@ A Typst package for creating pixel art directly in your documents. Convert image
 Convert raw image data to pixel art.
 
 **Parameters:**
-- `image-data` (bytes): Raw image data (e.g. from `read("path", encoding: none)`)
+- `image-data` (bytes/path): Raw image data from `read("path", encoding: none)`, or a project-side `path("path")` value with Typst 0.15.0 or later
 - `columns` (int, default: auto): Number of pixel columns
 - `rows` (int, default: auto): Number of pixel rows
 - `scale` (float, default: auto): Scale factor for image
@@ -69,12 +67,21 @@ Convert raw image data to pixel art.
 **Example:**
 ```typ
 #pixel-image(
-  read("logo.png", encoding: none),
+  path("logo.png"),
   columns: 48,
   colors: 32,
   pixel-size: 6pt,
   gap: 1pt,
   shape: circle-shape
+)
+```
+
+For Typst 0.13.x through 0.14.x, pass bytes explicitly:
+
+```typ
+#pixel-image(
+  read("logo.png", encoding: none),
+  columns: 48
 )
 ```
 
@@ -114,7 +121,7 @@ Obtain the raw pixel art data (grid and palette) from an image without rendering
 
 **Parameters:**
 
-* `image-data` (bytes): Raw image data (e.g. from `read("path", encoding: none)`)
+* `image-data` (bytes/path): Raw image data from `read("path", encoding: none)`, or a project-side `path("path")` value with Typst 0.15.0 or later
 * `columns` (int, default: auto): Number of pixel columns
 * `rows` (int, default: auto): Number of pixel rows
 * `scale` (float, default: auto): Scale factor for image (`auto` → internally `1` with safety guard: ≤ 1 MP allowed, otherwise error)
@@ -130,7 +137,7 @@ A dictionary containing:
 
 ```typ
 #let data = get-pixel-data(
-  read("icon.png", encoding: none)
+  path("icon.png")
 )
 
 // Access the raw grid string
@@ -187,7 +194,7 @@ A dictionary containing:
 ### Rainbow Gradient
 
 ```typ
-#import "@preview/typixel:0.1.1": *
+#import "@preview/typixel:0.1.2": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -212,7 +219,7 @@ A dictionary containing:
 ### Mixed Shapes
 
 ````typ
-#import "@preview/typixel:0.1.1": *
+#import "@preview/typixel:0.1.2": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 #pixel-map(
@@ -243,7 +250,7 @@ A dictionary containing:
 ### Custom Shape Definition
 
 ```typ
-#import "@preview/typixel:0.1.1": *
+#import "@preview/typixel:0.1.2": *
 #set page(width: auto, height: auto, margin: 1cm)
 
 // 1. Define your custom shape
